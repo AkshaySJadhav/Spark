@@ -14,7 +14,7 @@ Spark is designed to cover a wide range of workloads such as batch applications,
 3. Spark in MapReduce (SIMR) :- Spark in MapReduce is used to launch spark job in addition to standalone deployment. With SIMR, user can start Spark and uses its shell without any administrative access.
 
 
-## Here are some JARGONS from Apache Spark i will be using :-
+#### Here are some JARGONS from Apache Spark i will be using :-
 
 Job:- A piece of code which reads some input  from HDFS or local, performs some computation on the data and writes some output data.
 
