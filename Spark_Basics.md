@@ -31,3 +31,7 @@ Driver - The program/process responsible for running the Job over the Spark Engi
 Master - The machine on which the Driver program runs
 
 Slave - The machine on which the Executor program runs
+
+
+
+Referance : https://www.edureka.co/blog/spark-tutorial/?utm_campaign=social-media-edureka-november-sd&utm_medium=crosspost&utm_source=quora
