@@ -20,4 +20,4 @@ In client mode, the Spark driver runs on the host where the job is submitted. Th
 
 <img src="spark-yarn-client.png" height=500 width=700>
 
-<img src="ModeSummary.png"height=500 width=700>
+<img src="ModeSummary.png" height=500 width=700>
