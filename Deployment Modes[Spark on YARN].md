@@ -12,7 +12,7 @@ In cluster mode, the Spark driver runs in the ApplicationMaster on a cluster hos
 Cluster mode is not well suited to using Spark interactively. Spark applications that require user input, such as spark-shell and pyspark, require the Spark driver to run inside the client process that initiates the Spark application.
 
 
-![](images/Screenshot 2019-12-08 at 6.36.18 PM.png)
+![](images/Screenshot%202019-12-08%20at%206.36.18%20PM.png)
 
 #### 2. Client Deployment Mode :
 
