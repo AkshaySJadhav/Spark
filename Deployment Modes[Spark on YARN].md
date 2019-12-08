@@ -12,12 +12,12 @@ In cluster mode, the Spark driver runs in the ApplicationMaster on a cluster hos
 Cluster mode is not well suited to using Spark interactively. Spark applications that require user input, such as spark-shell and pyspark, require the Spark driver to run inside the client process that initiates the Spark application.
 
 
-<img src="spark-yarn-cluster.png")
+<img src="spark-yarn-cluster.png">
 
 #### 2. Client Deployment Mode :
 
 In client mode, the Spark driver runs on the host where the job is submitted. The ApplicationMaster is responsible only for requesting executor containers from YARN. After the containers start, the client communicates with the containers to schedule work.
 
-<img src="spark-yarn-client.png"
+<img src="spark-yarn-client.png">
 
-<img src="ModeSummary.png"
+<img src="ModeSummary.png">
