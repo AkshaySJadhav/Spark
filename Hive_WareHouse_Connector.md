@@ -74,7 +74,9 @@ within Apache Spark APIs themselves.
 5. Must use LLAP to access read ACID tables
 6. To write to an ACID table we do not need LLAP
 
-let's try to access the tables in spark with the help of HWC:
+
+Let's try to access the tables in spark with the help of HWC:
+
 
 ## Creating the databsases in beeline :
 
@@ -193,6 +195,60 @@ scala> hive.executeQuery("select * from hive_llap.parquet_table").show()
 
 ```
 
+Integration HWC with Ranger/Kerbrose :
+====
+
+In order to restrtic the user to see the Hive tables in spark shell with he help of HWC then you need to use the ranger to allow the specific user to have a access on tables.
+
+HDP would do the Authorization using LDAP and Authentication should be done by the Kerbrose. I have below user with full permission on All databases and all tables.
+
+1. Hive
+2. Akshay
+
+
+Rest of the users do not have any access over the tables/DB in hive. You need to have the priniciple for the lDAP user to have the proper access.
+
+akshay@HWX.COM
+santosh@HWX.COM
+
+```
+[root@c493-node1 ~]# su akshay
+[akshay@c493-node1 root]$ kinit akshay
+Password for akshay@HWX.COM: 
+[akshay@c493-node1 root]$ spark-shell --master yarn --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.1.4.0-315.jar --conf spark.security.credentials.hiveserver2.enabled=false
+
+scala> import com.hortonworks.hwc.HiveWarehouseSession
+import com.hortonworks.hwc.HiveWarehouseSession
+
+scala> val hive = HiveWarehouseSession.session(spark).build()
+hive: com.hortonworks.spark.sql.hive.llap.HiveWarehouseSessionImpl = com.hortonworks.spark.sql.hive.llap.HiveWarehouseSessionImpl@743167c7
+
+scala> hive.executeQuery("select * from hive_llap.hive_llap_tbl").show()
+20/01/27 11:49:59 WARN TaskSetManager: Stage 0 contains a task of very large size (447 KB). The maximum recommended task size is 100 KB.
++---+------+                                                                    
+| id|  name|
++---+------+
+|  2| Akash|
+|  1|Akshay|
++---+------+
+
+
+[root@c493-node1 ~]# su santosh
+[santosh@c493-node1 root]$ kinit santosh
+Password for santosh@HWX.COM: 
+[santosh@c493-node1 root]$ 
+[santosh@c493-node1 root]$ spark-shell --master yarn --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.1.4.0-315.jar --conf spark.security.credentials.hiveserver2.enabled=false
+
+scala> import com.hortonworks.hwc.HiveWarehouseSession
+import com.hortonworks.hwc.HiveWarehouseSession
+
+scala> val hive = HiveWarehouseSession.session(spark).build()
+hive: com.hortonworks.spark.sql.hive.llap.HiveWarehouseSessionImpl = com.hortonworks.spark.sql.hive.llap.HiveWarehouseSessionImpl@6d5a4e59
+
+scala> hive.executeQuery("select * from hive_llap.hive_llap_tbl").show()
+
+Caused by: org.apache.hive.service.cli.HiveSQLException: java.io.IOException: org.apache.hadoop.hive.ql.metadata.HiveException: Failed to compile query: org.apache.hadoop.hive.ql.security.authorization.plugin.HiveAccessControlException: Permission denied: user [santosh] does not have [SELECT] privilege on [hive_llap/hive_llap_tbl/*]
+```
 
 
 ### Referance :
