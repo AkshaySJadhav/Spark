@@ -78,7 +78,7 @@ within Apache Spark APIs themselves.
 Let's try to access the tables in spark with the help of HWC:
 
 
-## Creating the databsases in beeline :
+## Creating the database in beeline :
 
 Table orc_tbl is the ORC table and parquet_table is the parquet table here.
 
