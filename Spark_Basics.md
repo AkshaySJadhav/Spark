@@ -50,7 +50,8 @@ There are several useful things to note about this architecture:
 3. The driver program must listen for and accept incoming connections from its executors throughout its lifetime (e.g., see spark.driver.port in the network config section). As such, the driver program must be network addressable from the worker nodes.
 4. Because the driver schedules tasks on the cluster, it should be run close to the worker nodes, preferably on the same local area network. If you’d like to send requests to the cluster remotely, it’s better to open an RPC to the driver and have it submit operations from nearby than to run a driver far away from the worker nodes.
 
-
+<p align="center">
+<img src="Hadoop-v1.0-vs-Hadoop-v2.0.png" width=450 height=300 align="center"></p>
 
 - Standalone – a simple cluster manager included with Spark that makes it easy to set up a cluster.
 - Apache Mesos – a general cluster manager that can also run Hadoop MapReduce and service applications.
