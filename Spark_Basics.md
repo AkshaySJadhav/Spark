@@ -24,9 +24,11 @@ Tasks:- Each stage has some tasks, one task per partition. One task is executed 
 
 DAG - DAG stands for Directed Acyclic Graph, in the present context its a DAG of operators.
 
-Executor - The process responsible for executing a task.
+Executor - A process launched for an application on a worker node, that runs tasks and keeps data in memory or disk storage across them. Each application has its own executors.
 
-Driver - The program/process responsible for running the Job over the Spark Engine
+Driver - The process running the main() function of the application and creating the SparkContext
+
+Deploy Mode : Distinguishes where the driver process runs. In "cluster" mode, the framework launches the driver inside of the cluster. In "client" mode, the submitter launches the driver outside of the cluster.
 
 Master - The machine on which the Driver program runs
 
@@ -39,9 +41,6 @@ Spark applications run as independent sets of processes on a cluster, coordinate
 Specifically, to run on a cluster, the SparkContext can connect to several types of cluster managers (either Spark’s own standalone cluster manager, Mesos or YARN), which allocate resources across applications. Once connected, Spark acquires executors on nodes in the cluster, which are processes that run computations and store data for your application. Next, it sends your application code (defined by JAR or Python files passed to SparkContext) to the executors. Finally, SparkContext sends tasks to the executors to run.
 
 
-
-
-
 ##### Cluster Manager Types
 
 There are several useful things to note about this architecture:
@@ -52,23 +51,16 @@ There are several useful things to note about this architecture:
 4. Because the driver schedules tasks on the cluster, it should be run close to the worker nodes, preferably on the same local area network. If you’d like to send requests to the cluster remotely, it’s better to open an RPC to the driver and have it submit operations from nearby than to run a driver far away from the worker nodes.
 
 
+
 - Standalone – a simple cluster manager included with Spark that makes it easy to set up a cluster.
 - Apache Mesos – a general cluster manager that can also run Hadoop MapReduce and service applications.
 - Hadoop YARN – the resource manager in Hadoop 2.
 - Kubernetes – an open-source system for automating deployment, scaling, and management of containerized applications.
 - A third-party project (not supported by the Spark project) exists to add support for Nomad as a cluster manager.
 
-
-
-
-
-
-
-
-
-
 Referance : 
 
  1. https://www.edureka.co/blog/spark-tutorial/?utm_campaign=social-media-edureka-november-sd&utm_medium=crosspost&utm_source=quora
 
 2. https://spark.apache.org/docs/latest/cluster-overview.html
+3. https://spark.apache.org/docs/latest/
