@@ -251,6 +251,19 @@ Caused by: org.apache.hive.service.cli.HiveSQLException: java.io.IOException: or
 ```
 
 
+Note : If you have accessing the Hive via HWC on LDAP HIVE authentication setup then you need to pass the LDAP usernamer and password as below :
+
+```
+##Spark testing#
+/usr/hdp/3.0.1.0-187/spark2/bin/spark-shell --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.1.0-187.jar --conf spark.sql.hive.hiveserver2.jdbc.url="jdbc:hive2://c1136-node2.squadron.support.hortonworks.com:2181,c1136-node3.squadron.support.hortonworks.com:2181,c1136-node4.squadron.support.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2-interactive;user=hr1;password=BadPass%121"
+
+Replace the special character in string 
+
+https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients
+```
+
+
+
 ### Referance :
 
 1. http://docs.hortonworks.com.s3.amazonaws.com/HDPDocuments/HDP3/HDP-3.0.0/integrating-hive/hive_integrating_hive_and_bi.pdf
