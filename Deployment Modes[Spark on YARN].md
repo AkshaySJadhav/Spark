@@ -1,4 +1,3 @@
-
 Deployment Modes :
 ================
 
@@ -24,3 +23,7 @@ In client mode, the Spark driver runs on the host where the job is submitted. Th
 Below is the summary of both the modes :
 
 <img src="ModeSummary.png">
+
+
+When user submits a job in client mode then Driver program will spone on the same node that process will consume memory from the same host. Where as in cluster mode driver program will run on any of the available node on cluster. Spark is smart and reources allocation will happen in such a way that driver program get automatically sponned on any available node.
+ 
