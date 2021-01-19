@@ -15,7 +15,7 @@ These are the 5 steps at the high-level which Spark follows. Now let’s break d
 
 #### Query Plan
 
-Logical Plan:
+#### Logical Plan:
 
 Let’s say we have a code (DataFrame, DataSet, SQL). Now the first step will be the generation of the Logical Plan. Logical Plan is divided into three parts:
 
