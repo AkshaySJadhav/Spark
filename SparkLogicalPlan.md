@@ -49,7 +49,12 @@ If the Analyzer is not able to resolve them (column name, table name, etc), it c
 
 SQL to Resolved Logical Plan :
 
-After, the Resolved Logical plan is generated it is then passed on to a “Catalyst Optimizer” which will apply its own rule and will try to optimize the plan. Basically, Catalyst Optimizer performs logical optimization. For example, (i) It checks for all the tasks which can be performed and computed together in one Stage. (ii) In a multi-join query, it decides the order of execution of query for better performance. (iii) Tries to optimize the query by evaluating the filter clause before any project. This, in turn, generates an Optimized Logical Plan.
+After, the Resolved Logical plan is generated it is then passed on to a “Catalyst Optimizer” which will apply its own rule and will try to optimize the plan. Basically, Catalyst Optimizer performs logical optimization. 
+For example, 
+
+1. It checks for all the tasks which can be performed and computed together in one Stage. 
+2. In a multi-join query, it decides the order of execution of query for better performance.
+3. Tries to optimize the query by evaluating the filter clause before any project. This, in turn, generates an Optimized Logical Plan.
 
 
 ####  Physical Plan:
