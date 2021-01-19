@@ -115,7 +115,8 @@ There are several useful things to note about this architecture:
 
 Referance : 
 
- 1. https://www.edureka.co/blog/spark-tutorial/?utm_campaign=social-media-edureka-november-sd&utm_medium=crosspost&utm_source=quora
-
+1. https://www.edureka.co/blog/spark-tutorial/?utm_campaign=social-media-edureka-november-sd&utm_medium=crosspost&utm_source=quora
 2. https://spark.apache.org/docs/latest/cluster-overview.html
 3. https://spark.apache.org/docs/latest/
+4. https://blog.knoldus.com/understanding-the-working-of-spark-driver-and-executor/
+5. https://blog.knoldus.com/understanding-sparks-logical-and-physical-plan-in-laymans-term/
